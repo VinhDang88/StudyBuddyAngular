@@ -1,12 +1,20 @@
-<app-study-list></app-study-list>
+<app-study-list [newCategory]="newCategory"></app-study-list>
 
-<button (click)="toggleDisplay();">Add a question</button>
+<button (click)="toggleDisplay()">Add a question</button>
 
 <form *ngIf="toggleAdd" #Submit="ngForm" (ngSubmit)="addQuestions(Submit)">
-    <input type="text" name="question" placeholder="Add a question here" ngModel>
-    <input type="text" name="answer" placeholder="Add an answer here" ngModel>
-    <input type="text" name="category" placeholder="Add a category here" ngModel>
-    <button>Submit your flashcard</button>
-
-
+  <input
+    type="text"
+    name="question"
+    placeholder="Add a question here"
+    ngModel
+  />
+  <input type="text" name="answer" placeholder="Add an answer here" ngModel />
+  <input
+    type="text"
+    name="category"
+    placeholder="Add a category here"
+    ngModel
+  />
+  <button>Submit your flashcard</button>
 </form>

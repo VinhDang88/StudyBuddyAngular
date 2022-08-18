@@ -9,7 +9,7 @@ import { StudyService } from '../study.service';
   templateUrl: './home.component.html',
 })
 export class HomeComponent {
-
+newCategory:Study = {} as Study;
   study:Study = {} as Study;
   constructor(private studyService:StudyService, private favoriteService: FavoriteService){}
   toggleAdd:boolean = false;
@@ -20,7 +20,8 @@ export class HomeComponent {
       let answer:string = form.form.value.answer;
       this.studyService.addQuestion(category,question,answer).subscribe((response:any)=>{
       this.study = response;
-     location.reload(); //BAD PRACTICE FIND BETTER SOLUTION
+      this.newCategory = response;
+    //  location.reload(); //BAD PRACTICE FIND BETTER SOLUTION
     });
     this.toggleAdd = !this.toggleAdd
   }

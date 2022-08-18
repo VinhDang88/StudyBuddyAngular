@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Study } from '../study';
 import { StudyService } from '../study.service';
 
@@ -8,8 +8,8 @@ import { StudyService } from '../study.service';
   templateUrl: './study-list.component.html',
   styleUrls: ['./study-list.component.css']
 })
-export class StudyListComponent implements OnInit {
-
+export class StudyListComponent implements OnInit, OnChanges {
+@Input() newCategory: Study = {} as Study;
   study:Study[] = [];
   constructor(private http:HttpClient, private studyService:StudyService) { }
 
@@ -19,4 +19,7 @@ export class StudyListComponent implements OnInit {
     })
   }
 
+  ngOnChanges(changes:SimpleChanges):void {
+      this.study.push(this.newCategory);
+  }
 }
