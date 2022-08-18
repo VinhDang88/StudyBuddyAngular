@@ -14,7 +14,7 @@ export class StudyService {
   }
 
   addQuestion(category:string, question:string, answer:string):any{
-    this.http.post(this.baseUrl+this.endpoint+`/addQuestion?category=${category}&question=${question}&=answer${answer}`, {})
+    return this.http.post(this.baseUrl+this.endpoint+`/addQuestion?category=${category}&question=${question}&answer=${answer}`, {})
 
   }
   getCategories():any{

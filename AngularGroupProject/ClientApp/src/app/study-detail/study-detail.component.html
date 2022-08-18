@@ -1,8 +1,8 @@
 <div *ngFor="let c of studyCategory; index as i">
   <div>
     <button (click)="toggleAnswerArray(i)">
-      <p *ngIf="toggleArr[i] == true">{{ c.question }}</p>
-      <p *ngIf="toggleArr[i] == false">{{ c.answer }}</p>
+      <p *ngIf="toggleArr[i] == false">{{ c.question }}</p>
+      <p *ngIf="toggleArr[i] == true">{{ c.answer }}</p>
     </button>
   </div>
 </div>
