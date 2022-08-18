@@ -11,11 +11,12 @@ namespace AngularGroupProject.Controllers
         StudyDBContext context = new StudyDBContext();
 
         [HttpPost("addFavorite")]
-        public Favorite addFavorite(int study_id)
+        public Favorite addFavorite(int study_id, int userId)
         {
             Favorite favorite = new Favorite()
             {
-                StudyId = study_id
+                StudyId = study_id,
+                UserId = userId
             };
             context.Favorites.Add(favorite);
             context.SaveChanges();
@@ -23,9 +24,9 @@ namespace AngularGroupProject.Controllers
         }
 
         [HttpDelete("deleteFavorite")]
-        public Favorite deleteFavorite(int id)
+        public Favorite deleteFavorite(int id, int userId)
         {
-            Favorite favorite = context.Favorites.FirstOrDefault(f => f.Id == id);
+            Favorite favorite = context.Favorites.FirstOrDefault(f => f.Id == id && f.UserId == userId);
             context.Favorites.Remove(favorite);
             context.SaveChanges();
             return favorite;

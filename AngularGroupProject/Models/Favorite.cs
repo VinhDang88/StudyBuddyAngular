@@ -7,6 +7,7 @@ namespace AngularGroupProject.Models
     {
         public int Id { get; set; }
         public int? StudyId { get; set; }
+        public int? UserId { get; set; }
 
         public virtual Study? Study { get; set; }
     }

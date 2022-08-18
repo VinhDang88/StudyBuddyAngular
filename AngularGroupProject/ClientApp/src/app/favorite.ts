@@ -1,4 +1,5 @@
 export interface Favorite {
     id:number;
-    studyid:number;
+    studyId:number;
+    userId:number;
 }

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { FavoriteService } from '../favorite.service';
 import { Study } from '../study';
 import { StudyService } from '../study.service';
 
@@ -10,7 +11,7 @@ import { StudyService } from '../study.service';
 export class HomeComponent {
 
   study:Study = {} as Study;
-  constructor(private studyService:StudyService){}
+  constructor(private studyService:StudyService, private favoriteService: FavoriteService){}
   toggleAdd:boolean = false;
 
   addQuestions(form:NgForm):void{

@@ -11,6 +11,7 @@ import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { StudyListComponent } from './study-list/study-list.component';
 import { StudyDetailComponent } from './study-detail/study-detail.component';
+import { FavoriteComponent } from './favorite/favorite.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { StudyDetailComponent } from './study-detail/study-detail.component';
     CounterComponent,
     FetchDataComponent,
     StudyListComponent,
-    StudyDetailComponent
+    StudyDetailComponent,
+    FavoriteComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -31,7 +33,8 @@ import { StudyDetailComponent } from './study-detail/study-detail.component';
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
       {path:'Study', component:StudyListComponent},
-      {path:'Study/:category', component:StudyDetailComponent}
+      {path:'Study/:category', component:StudyDetailComponent},
+      {path:'Favorites', component:FavoriteComponent }
     ])
   ],
   providers: [],
