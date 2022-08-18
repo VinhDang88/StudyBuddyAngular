@@ -30,5 +30,10 @@ namespace AngularGroupProject.Controllers
             context.SaveChanges();
             return favorite;
         }
+        [HttpGet("getFavorite")]
+        public List<Favorite> getFavorite()
+        {
+            return context.Favorites.ToList();
+        }
     }
 }

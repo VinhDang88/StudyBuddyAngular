@@ -18,4 +18,9 @@ export class FavoriteService {
   deleteFavorite(id:number):any{
     this.http.delete(this.baseUrl+this.endpoint+`/deleteFavorite?id=${id}`)
   }
+
+  getFavorite():any{
+    this.http.get(`${this.baseUrl}${this.endpoint}/getFavorite`);
+  }
+
 }

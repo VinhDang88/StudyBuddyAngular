@@ -17,4 +17,10 @@ export class StudyService {
     this.http.post(this.baseUrl+this.endpoint+`/addQuestion?category=${category}&question=${question}&=answer${answer}`, {})
 
   }
+  getCategories():any{
+    return this.http.get(`${this.baseUrl}${this.endpoint}/getCategories`);
+  }
+  getCategory(category:string):any{
+    return this.http.get(`${this.baseUrl}${this.endpoint}/getCategory?category=${category}`);
+  }
 }

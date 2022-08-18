@@ -1,0 +1,16 @@
+<div *ngFor="let c of studyCategory; index as i">
+  <div>
+    <button (click)="toggleAnswerArray(i)">
+      <p *ngIf="toggleArr[i] == true">{{ c.question }}</p>
+      <p *ngIf="toggleArr[i] == false">{{ c.answer }}</p>
+    </button>
+  </div>
+</div>
+
+<!-- <div>
+  <p *ngIf="toggle == true">{{ studyCategory[count].question }}</p>
+  <p *ngIf="toggle == false">{{ studyCategory[count].answer }}</p>
+  <button (click)="previousquestion()">Previous Question</button>
+  <button (click)="toggleAnswer()">Toggle</button>
+  <button (click)="nextquestion()">Next Question</button>
+</div> -->

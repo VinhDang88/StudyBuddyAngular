@@ -30,5 +30,17 @@ namespace AngularGroupProject.Controllers
             return study;
         }
 
+        [HttpGet("getCategories")]
+        public List<Study> getCategories()
+        {
+            return context.Studies.GroupBy(p => p.Category).Select(p => p.First()).ToList();
+        }
+
+        [HttpGet("getCategory")]
+        public List<Study> getCategory(string category)
+        {
+            return context.Studies.Where(p => p.Category == category).ToList();
+        }
+
     }
 }
