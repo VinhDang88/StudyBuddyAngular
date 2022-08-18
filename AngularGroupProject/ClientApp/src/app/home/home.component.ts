@@ -20,6 +20,7 @@ export class HomeComponent {
       let answer:string = form.form.value.answer;
       this.studyService.addQuestion(category,question,answer).subscribe((response:any)=>{
       this.study = response;
+     location.reload(); //BAD PRACTICE FIND BETTER SOLUTION
     });
     this.toggleAdd = !this.toggleAdd
   }
