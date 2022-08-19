@@ -19,8 +19,9 @@ export class StudyDetailComponent implements OnInit {
   toggleArr:boolean[] = [];
   favorite:Favorite = {} as Favorite;
   newStudyList:Study[] = [];
+  favArray:boolean[] = [];
   
-@Input() favorites:Favorite[] = [];
+  favorites:Favorite[] = [];
 
   constructor(private route:ActivatedRoute, private studyService:StudyService, private favoriteService:FavoriteService) { }
 
@@ -32,6 +33,7 @@ export class StudyDetailComponent implements OnInit {
       this.studyCategory = response;
       for(let i=0; i < this.studyCategory.length; i++){
         this.toggleArr.push(false);
+        this.favArray.push(true);
       }
       console.log(this.toggleArr);
     })
@@ -40,26 +42,38 @@ export class StudyDetailComponent implements OnInit {
     {
         this.newStudyList = response;
     });
+    this.favoriteService.getFavorite().subscribe((response:Favorite[]) => {
+      this.favorites = response;
+    })
   }
 
+  //this.favArray[id - 1] == true <- additional conditional statement
+  displayFavorite(id:number):boolean{
+    if(!this.favorites.map(f => f.studyId).includes(id)){
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
  
-  nextquestion():void { 
-    if(this.studyCategory.length > this.count){
-      this.count++;
-      this.toggle = true;
-      if(this.count == this.studyCategory.length){
-        this.count--;
-      }
-    }
+  // nextquestion():void { 
+  //   if(this.studyCategory.length > this.count){
+  //     this.count++;
+  //     this.toggle = true;
+  //     if(this.count == this.studyCategory.length){
+  //       this.count--;
+  //     }
+  //   }
     
-  };
-  previousquestion():void { 
-    if(this.count > 0){
-      this.count--;
-      this.toggle = true;
-    }
+  // };
+  // previousquestion():void { 
+  //   if(this.count > 0){
+  //     this.count--;
+  //     this.toggle = true;
+  //   }
     
-  };
+  // };
 
   toggleAnswer():void{
     this.toggle = !this.toggle;
@@ -67,16 +81,20 @@ export class StudyDetailComponent implements OnInit {
   toggleAnswerArray(i:number):void{
     this.toggleArr[i] = !this.toggleArr[i];
   }
+  toggleFavArray(i:number):void{
+    this.favArray[i] = !this.favArray[i];
+  }
+
 
   addFavorite(id:number):any {    
     
     return this.favoriteService.addFavorite(id).subscribe((response:Favorite) =>
     {
         this.favorite = response;
-        console.log(this.favorite);
-        this.favorites.splice(id,1);
-        console.log(this.favorites);
-    });    
+        this.favoriteService.getFavorite().subscribe((response:Favorite[]) => {
+          this.favorites = response;
+        });
+    }); 
     
   }
 

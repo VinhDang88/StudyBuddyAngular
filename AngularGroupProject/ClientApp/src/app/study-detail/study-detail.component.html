@@ -5,7 +5,11 @@
       <p *ngIf="toggleArr[i] == true">{{ c.answer }}</p>
     </button>
     <button
-      (click)="addFavorite(selectFavorite(c.question, c.answer, c.category))"
+      (click)="
+        addFavorite(selectFavorite(c.question, c.answer, c.category));
+        toggleFavArray(i)
+      "
+      *ngIf="displayFavorite(c.id) == true"
     >
       Add Favorite
     </button>
