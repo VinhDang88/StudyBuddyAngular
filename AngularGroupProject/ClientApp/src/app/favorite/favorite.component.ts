@@ -16,6 +16,7 @@ export class FavoriteComponent implements OnInit {
   favorites: Favorite[] = [];
   study: Study[] = [];
   favoriteStudies: Study[] = [];
+  favorite:Favorite = {} as Favorite;
 
   ngOnInit(): void {
     this.favoriteService.getFavorite().subscribe((response: Favorite[]) => {
@@ -25,7 +26,7 @@ export class FavoriteComponent implements OnInit {
     this.studyService.getQuestions().subscribe((response: Study[]) => {
       this.study = response;
       console.log(this.study);
-    });
+    });    
 
   }
 
@@ -46,5 +47,16 @@ export class FavoriteComponent implements OnInit {
     // console.log(result);
     // return result;
   }
+
+  deleteFavorite(index:number):any{
+    this.favoriteService.deleteFavorite(index).subscribe((response:Favorite) =>{
+        this.favoriteService.getFavorite().subscribe((response:Favorite[]) =>{
+          this.favorites = response;
+          console.log(this.favorites);
+        })
+        return response;
+    });
+  }
+  
 
 }

@@ -11,19 +11,28 @@
 --('Programming', 'Test3', 'Answer3'),
 --('Programming', 'Test4', 'Answer4')
 
-SELECT * FROM Study;
+--SELECT * FROM Study;
 
 --CREATE TABLE Favorite (
 --	Id INT PRIMARY KEY IDENTITY(1,1),
---	Study_Id INT FOREIGN KEY REFERENCES Study(Id),
+--	Study_Id INT,
 --  UserId INT
 --);
 
-SELECT * FROM Favorite;
+--SELECT * FROM Favorite;
 
 --ALTER TABLE Favorite
---ADD UserId INT;
+
+--DELETE FROM Favorite;
+
+
+--DROP TABLE Favorite;
+
 
 --UPDATE Favorite
 --SET UserId = 1;
+
+
+--DELETE FROM Study;
+--DELETE FROM Favorite;
 

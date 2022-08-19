@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Favorite } from '../favorite';
+import { FavoriteService } from '../favorite.service';
 import { Study } from '../study';
 import { StudyService } from '../study.service';
 
@@ -15,9 +17,12 @@ export class StudyDetailComponent implements OnInit {
   studyCategory: Study[] = [];
   toggle:boolean = true;
   toggleArr:boolean[] = [];
+  favorite:Favorite = {} as Favorite;
+  newStudyList:Study[] = [];
+  
+@Input() favorites:Favorite[] = [];
 
-
-  constructor(private route:ActivatedRoute, private studyService:StudyService,) { }
+  constructor(private route:ActivatedRoute, private studyService:StudyService, private favoriteService:FavoriteService) { }
 
   ngOnInit(): void {
     let params = this.route.snapshot.paramMap;
@@ -30,6 +35,11 @@ export class StudyDetailComponent implements OnInit {
       }
       console.log(this.toggleArr);
     })
+
+    this.studyService.getQuestions().subscribe((response:Study[]) =>
+    {
+        this.newStudyList = response;
+    });
   }
 
  
@@ -57,4 +67,31 @@ export class StudyDetailComponent implements OnInit {
   toggleAnswerArray(i:number):void{
     this.toggleArr[i] = !this.toggleArr[i];
   }
+
+  addFavorite(id:number):any {    
+    
+    return this.favoriteService.addFavorite(id).subscribe((response:Favorite) =>
+    {
+        this.favorite = response;
+        console.log(this.favorite);
+        this.favorites.splice(id,1);
+        console.log(this.favorites);
+    });    
+    
+  }
+
+  selectFavorite(question:string, answer:string, category:string):number {
+
+    let index:number = 0;
+    this.newStudyList.forEach((s:Study) =>
+    {
+        if(s.question == question && s.answer == answer && s.category == category)
+        {
+           index = this.newStudyList.indexOf(s) + 1;
+        }
+    });
+    return index;
+  }
+
+  
 }

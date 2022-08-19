@@ -35,11 +35,6 @@ namespace AngularGroupProject.Models
                 entity.ToTable("Favorite");
 
                 entity.Property(e => e.StudyId).HasColumnName("Study_Id");
-
-                entity.HasOne(d => d.Study)
-                    .WithMany(p => p.Favorites)
-                    .HasForeignKey(d => d.StudyId)
-                    .HasConstraintName("FK__Favorite__Study___267ABA7A");
             });
 
             modelBuilder.Entity<Study>(entity =>

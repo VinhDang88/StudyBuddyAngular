@@ -4,6 +4,11 @@
       <p *ngIf="toggleArr[i] == false">{{ c.question }}</p>
       <p *ngIf="toggleArr[i] == true">{{ c.answer }}</p>
     </button>
+    <button
+      (click)="addFavorite(selectFavorite(c.question, c.answer, c.category))"
+    >
+      Add Favorite
+    </button>
   </div>
 </div>
 

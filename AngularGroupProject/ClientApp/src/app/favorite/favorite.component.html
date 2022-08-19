@@ -1,6 +1,6 @@
-<div *ngFor="let f of getFavoriteList()">
+<div *ngFor="let f of getFavoriteList(); index as i">
   <p>{{ f.category }}</p>
   <p>{{ f.question }}</p>
   <p>{{ f.answer }}</p>
+  <button (click)="deleteFavorite(f.id)">Delete</button>
 </div>
-<p>test</p>

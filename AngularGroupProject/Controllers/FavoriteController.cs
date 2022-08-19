@@ -26,7 +26,7 @@ namespace AngularGroupProject.Controllers
         [HttpDelete("deleteFavorite")]
         public Favorite deleteFavorite(int id, int userId)
         {
-            Favorite favorite = context.Favorites.FirstOrDefault(f => f.Id == id && f.UserId == userId);
+            Favorite favorite = context.Favorites.FirstOrDefault(f => f.StudyId == id && f.UserId == userId);
             context.Favorites.Remove(favorite);
             context.SaveChanges();
             return favorite;
