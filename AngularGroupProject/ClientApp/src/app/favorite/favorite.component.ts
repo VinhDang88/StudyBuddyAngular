@@ -3,6 +3,7 @@ import { Favorite } from '../favorite';
 import { FavoriteService } from '../favorite.service';
 import { Study } from '../study';
 import { StudyService } from '../study.service';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-favorite',
@@ -20,7 +21,14 @@ export class FavoriteComponent implements OnInit {
 
   ngOnInit(): void {
     this.favoriteService.getFavorite().subscribe((response: Favorite[]) => {
-      this.favorites = response;
+      response.forEach((r:Favorite)=>{
+        if(r.userId == UserService.userId)
+        {
+          this.favorites.push(r)
+        }
+
+      })
+      // this.favorites = response;
       console.log(this.favorites);
     });
     this.studyService.getQuestions().subscribe((response: Study[]) => {
@@ -51,8 +59,13 @@ export class FavoriteComponent implements OnInit {
   deleteFavorite(index:number):any{
     this.favoriteService.deleteFavorite(index).subscribe((response:Favorite) =>{
         this.favoriteService.getFavorite().subscribe((response:Favorite[]) =>{
-          this.favorites = response;
-          console.log(this.favorites);
+          response.forEach((r:Favorite)=>{
+            if(r.userId == UserService.userId)
+            {
+              this.favorites.push(r)
+            }
+    
+          })
         })
         return response;
     });

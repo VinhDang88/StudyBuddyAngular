@@ -1,20 +1,15 @@
-<app-study-list [newCategory]="newCategory"></app-study-list>
+<form #LogInForm="ngForm" (ngSubmit)="LogIn(LogInForm)">
+  <input type="number" name="id" ngModel />
+  <button>Login</button>
+
+</form>
+<app-study-list *ngIf="isLoggedIn()" [newCategory]="newCategory"></app-study-list>
 
 <button (click)="toggleDisplay()">Add a question</button>
 
 <form *ngIf="toggleAdd" #Submit="ngForm" (ngSubmit)="addQuestions(Submit)">
-  <input
-    type="text"
-    name="question"
-    placeholder="Add a question here"
-    ngModel
-  />
+  <input type="text" name="question" placeholder="Add a question here" ngModel />
   <input type="text" name="answer" placeholder="Add an answer here" ngModel />
-  <input
-    type="text"
-    name="category"
-    placeholder="Add a category here"
-    ngModel
-  />
+  <input type="text" name="category" placeholder="Add a category here" ngModel />
   <button>Submit your flashcard</button>
 </form>

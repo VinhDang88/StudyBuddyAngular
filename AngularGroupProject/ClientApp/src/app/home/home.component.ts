@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Study } from '../study';
 import { StudyService } from '../study.service';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-home',
@@ -27,5 +28,13 @@ newCategory:Study = {} as Study;
 
   toggleDisplay():void{
     this.toggleAdd = !this.toggleAdd;
+  }
+  LogIn(form:NgForm):void{
+    let id = form.form.value.id
+    UserService.userId = id;
+  }
+
+  isLoggedIn():boolean{
+    return UserService.isLoggedIn();
   }
 }

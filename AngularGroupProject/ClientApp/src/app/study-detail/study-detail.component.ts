@@ -5,6 +5,7 @@ import { Favorite } from '../favorite';
 import { FavoriteService } from '../favorite.service';
 import { Study } from '../study';
 import { StudyService } from '../study.service';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-study-detail',
@@ -44,7 +45,15 @@ export class StudyDetailComponent implements OnInit {
     });
     this.favoriteService.getFavorite().subscribe((response:Favorite[]) => {
       this.favorites = response;
+      // response.forEach((r:Favorite)=>{
+      //   if(r.userId == UserService.userId)
+      //   {
+      //     this.favorites.push(r)
+      //   }
+
+      // })
     })
+
   }
 
   //this.favArray[id - 1] == true <- additional conditional statement
