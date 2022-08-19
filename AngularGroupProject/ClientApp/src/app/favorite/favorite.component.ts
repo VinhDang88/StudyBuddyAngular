@@ -20,19 +20,9 @@ export class FavoriteComponent implements OnInit {
   favorite:Favorite = {} as Favorite;
 
   ngOnInit(): void {
-    this.favoriteService.getFavorite().subscribe((response: Favorite[]) => {
-      response.forEach((r:Favorite)=>{
-        if(r.userId == UserService.userId)
-        {
-          this.favorites.push(r)
-        }
-
-      })
-      // this.favorites = response;
-      console.log(this.favorites);
-    });
     this.studyService.getQuestions().subscribe((response: Study[]) => {
       this.study = response;
+      this.getFavorites();
       console.log(this.study);
     });    
 
@@ -57,17 +47,26 @@ export class FavoriteComponent implements OnInit {
   }
 
   deleteFavorite(index:number):any{
+
     this.favoriteService.deleteFavorite(index).subscribe((response:Favorite) =>{
-        this.favoriteService.getFavorite().subscribe((response:Favorite[]) =>{
-          response.forEach((r:Favorite)=>{
-            if(r.userId == UserService.userId)
-            {
-              this.favorites.push(r)
-            }
-    
-          })
-        })
-        return response;
+      let i = this.favorites.findIndex(f => f.id == index)
+      this.favorites.splice(i,1)
+      // this.getFavorites();
+    });
+  }
+
+  getFavorites():void{
+
+    this.favoriteService.getFavorite().subscribe((response: Favorite[]) => {
+      response.forEach((r:Favorite)=>{
+        if(r.userId == UserService.userId)
+        {
+          this.favorites.push(r)
+        }
+
+      })
+      // this.favorites = response;
+      console.log(this.favorites);
     });
   }
   

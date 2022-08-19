@@ -42,28 +42,30 @@ export class StudyDetailComponent implements OnInit {
     this.studyService.getQuestions().subscribe((response:Study[]) =>
     {
         this.newStudyList = response;
+        this.getFavorites();
     });
-    this.favoriteService.getFavorite().subscribe((response:Favorite[]) => {
-      this.favorites = response;
-      // response.forEach((r:Favorite)=>{
-      //   if(r.userId == UserService.userId)
-      //   {
-      //     this.favorites.push(r)
-      //   }
 
-      // })
-    })
 
   }
 
   //this.favArray[id - 1] == true <- additional conditional statement
-  displayFavorite(id:number):boolean{
-    if(!this.favorites.map(f => f.studyId).includes(id)){
-      return true;
-    }
-    else{
-      return false;
-    }
+  displayFavorite(questionId:number):boolean{
+    let display:boolean = true;
+    this.favorites.forEach((f:Favorite)=>{
+      if(f.studyId == questionId){
+
+        display = false;
+      }
+  
+    })
+      return display;
+  
+    // if(!this.favorites.map(f => f.studyId).includes(id)){
+    //   return true;
+    // }
+    // else{
+    //   return false;
+    // }
   }
  
   // nextquestion():void { 
@@ -100,9 +102,7 @@ export class StudyDetailComponent implements OnInit {
     return this.favoriteService.addFavorite(id).subscribe((response:Favorite) =>
     {
         this.favorite = response;
-        this.favoriteService.getFavorite().subscribe((response:Favorite[]) => {
-          this.favorites = response;
-        });
+        this.getFavorites();
     }); 
     
   }
@@ -120,5 +120,16 @@ export class StudyDetailComponent implements OnInit {
     return index;
   }
 
-  
+  getFavorites():void{
+    this.favorites = [];
+    this.favoriteService.getFavorite().subscribe((response:Favorite[]) => {
+      response.forEach((r:Favorite)=>{
+        if(r.userId == UserService.userId)
+        {
+          this.favorites.push(r)
+        }
+      })
+    })
+  }
+
 }
