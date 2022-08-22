@@ -29,21 +29,21 @@ export class FavoriteComponent implements OnInit {
   }
 
   getFavoriteList(): Study[]{
-    this.favoriteStudies = this.study.filter((s:Study) => {
-     return this.favorites.map(f => f.studyId).includes(s.id);
-    });
-    return this.favoriteStudies;
-
-    // let result: Study[] = [];
-    // this.study.forEach((s:Study) => {
-    //   this.favorites.forEach((f:Favorite) => {
-    //     if(Number(f.studyId) == Number(s.id)){
-    //       result.push(s);
-    //     }
-    //   });
+    // this.favoriteStudies = this.study.filter((s:Study) => {
+    //  return this.favorites.map(f => f.studyId).includes(s.id);
     // });
-    // console.log(result);
-    // return result;
+    // return this.favoriteStudies;
+
+    let result: Study[] = [];
+    this.study.forEach((s:Study) => {
+      this.favorites.forEach((f:Favorite) => {
+        if(Number(f.studyId) == Number(s.id) && f.userId == UserService.userId){
+          result.push(s);
+        }
+      });
+    });
+    console.log(result);
+    return result;
   }
 
   deleteFavorite(index:number):any{
@@ -53,6 +53,7 @@ export class FavoriteComponent implements OnInit {
         this.favorites = response;
       })
       this.getFavoriteList();
+      
     });
   }
 
