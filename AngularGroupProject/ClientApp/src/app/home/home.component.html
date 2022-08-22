@@ -1,22 +1,58 @@
-<h1 *ngIf="isLoggedIn()">Logged in as User {{ id }}</h1>
-<form #LogInForm="ngForm" (ngSubmit)="LogIn(LogInForm)">
-  <input type="number" name="id" ngModel />
-  <button>Login</button>
-</form>
+<div class="container">
+  <div class="row">
+    <h1
+      class="TitleBack col-4 text-center offset-4 border rounded"
+      *ngIf="isLoggedIn()"
+    >
+      Logged in as User {{ id }}
+    </h1>
+    <form #LogInForm="ngForm" (ngSubmit)="LogIn(LogInForm)">
+      <!-- <h1>Please Log In Below:</h1> -->
+      <input
+        type="number"
+        name="id"
+        ngModel
+        placeholder="Please type in user ID"
+        class="col-6"
+      />
+      <br />
+      <button class="btn btn-primary btn-sm col-3">Login</button>
+      <br />
+    </form>
+  </div>
 
+  <div *ngIf="isLoggedIn()">
+    <br />
+    <button class="btn btn-primary btn-sm" (click)="toggleDisplay()">
+      Add a question
+    </button>
 
-<div *ngIf="isLoggedIn()">
+    <br />
+    <form *ngIf="toggleAdd" #Submit="ngForm" (ngSubmit)="addQuestions(Submit)">
+      <input
+        type="text"
+        name="question"
+        placeholder="Add a question here"
+        ngModel
+      />
+      <input
+        type="text"
+        name="answer"
+        placeholder="Add an answer here"
+        ngModel
+      />
+      <input
+        type="text"
+        name="category"
+        placeholder="Add a category here"
+        ngModel
+      />
+      <button>Submit your flashcard</button>
+    </form>
+  </div>
 
-
-  <button (click)="toggleDisplay()">Add a question</button>
-
-  <form *ngIf="toggleAdd" #Submit="ngForm" (ngSubmit)="addQuestions(Submit)">
-    <input type="text" name="question" placeholder="Add a question here" ngModel />
-    <input type="text" name="answer" placeholder="Add an answer here" ngModel />
-    <input type="text" name="category" placeholder="Add a category here" ngModel />
-    <button>Submit your flashcard</button>
-  </form>
-
+  <app-study-list
+    *ngIf="isLoggedIn()"
+    [newCategory]="newCategory"
+  ></app-study-list>
 </div>
-
-<app-study-list *ngIf="isLoggedIn()" [newCategory]="newCategory"></app-study-list>

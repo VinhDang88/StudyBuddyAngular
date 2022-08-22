@@ -1,19 +1,28 @@
-<div style="text-align: center; margin: 10px;" *ngFor="let c of studyCategory; index as i">
-  <button class="detailButton" (click)="toggleAnswerArray(i)">
-    <p *ngIf="toggleArr[i] == false">{{ c.question }}</p>
-    <p *ngIf="toggleArr[i] == true">{{ c.answer }}</p>
-  </button>
+<br />
+<div class="container">
+  <div class="row">
+    <div
+      class="detailButtons mt-0 col-4"
+      *ngFor="let c of studyCategory; index as i"
+    >
+      <button class="detailButton" (click)="toggleAnswerArray(i)">
+        <p *ngIf="toggleArr[i] == false">{{ c.question }}</p>
+        <p *ngIf="toggleArr[i] == true">{{ c.answer }}</p>
+      </button>
 
-  <div>
-    <button (click)="addFavorite(c.id); toggleFavArray(i)" *ngIf="displayFavorite(c.id) == true">
-      Add Favorite
-    </button>
+      <br />
+      <div>
+        <button
+          class="btn btn-lg btn-primary"
+          (click)="addFavorite(c.id); toggleFavArray(i)"
+          *ngIf="displayFavorite(c.id) == true"
+        >
+          Add Favorite
+        </button>
+      </div>
+    </div>
   </div>
 </div>
-
-
-
-
 
 <!-- <div>
   <p *ngIf="toggle == true">{{ studyCategory[count].question }}</p>

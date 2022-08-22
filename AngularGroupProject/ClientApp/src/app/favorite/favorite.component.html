@@ -1,12 +1,21 @@
-<div style="text-align: center; margin: 10px;" *ngFor="let f of getFavoriteList(); index as i">
-  <button class="detailButton" (click)="toggleAnswerArray(i)">
-    <p *ngIf="toggleArr[i] == false">{{ f.question }}</p>
-    <p *ngIf="toggleArr[i] == true">{{ f.answer }}</p>
-  </button>
+<div>
+  <br />
+  <h1 class="TitleBack col-2 text-center offset-5 border rounded" style="">
+    Favorite List:
+  </h1>
+  <div
+    style="text-align: center; margin: 10px; margin-top: 0px"
+    *ngFor="let f of getFavoriteList(); index as i"
+  >
+    <button class="detailButton" (click)="toggleAnswerArray(i)">
+      <p *ngIf="toggleArr[i] == false">{{ f.question }}</p>
+      <p *ngIf="toggleArr[i] == true">{{ f.answer }}</p>
+    </button>
 
-  <div>
-
-    <button (click)="deleteFavorite(f.id)">Delete</button>
-
+    <div>
+      <button class="btn btn-lg btn-primary" (click)="deleteFavorite(f.id)">
+        Delete
+      </button>
+    </div>
   </div>
 </div>

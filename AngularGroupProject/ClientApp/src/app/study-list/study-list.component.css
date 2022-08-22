@@ -1,0 +1,25 @@
+.container {
+    display: flex;
+    text-align: center;
+    flex-wrap: wrap;
+    
+  }
+
+  .card {
+    background-image: url(https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2076&q=80);
+    width: 400px;
+    height: 200px;
+    margin: 20px;
+    border-radius: 15px;
+    background-size: cover;
+    
+  
+  }
+  
+  .card a {
+    background-color: rgb(0, 0, 0);
+    color: white;
+    padding: 15px 20px;
+    display: block;
+    text-align: center;
+  }

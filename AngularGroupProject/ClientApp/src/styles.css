@@ -1,6 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 
 /* Provide sufficient contrast against white background */
+*{
+  font-family: 'Oswald', sans-serif;
+}
 a {
   color: #0366d6;
 }
@@ -15,37 +18,11 @@ code {
   border-color: #1861ac;
 }
 
-.container {
-  display: flex;
+.TitleBack{
   text-align: center;
-  flex-wrap: wrap;
-  
-}
-
-.card {
-  background-image: url(https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2076&q=80);
-  width: 400px;
-  height: 200px;
-  margin: 20px;
-  border-radius: 15px;
-  background-size: cover;
-
-}
-
-.card a {
-  background-color: rgb(0, 0, 0);
-  color: white;
-  padding: 15px 20px;
-  display: block;
-  text-align: center;
-}
-
-.detailButton {
-
-  height: 200px;
-  width: 400px;
-  background-color: whitesmoke;
-  border-radius: 5px;
-  font-size: 16px;
-
+      color: white;
+      text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+      padding-top: 10px;
+      font-size: 3rem;
+      background-color: rgba(255, 255, 255, 0.5);
 }

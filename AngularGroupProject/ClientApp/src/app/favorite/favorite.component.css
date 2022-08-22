@@ -1,0 +1,19 @@
+.detailButton {
+
+    height: 200px;
+    width: 400px;
+    background-color: whitesmoke;
+    border-radius: 5px;
+    font-size: 2rem;
+    background-image: url('https://i.pinimg.com/originals/9d/b7/8e/9db78e52cd0440b27286ee6c075fc61b.jpg');
+    background-size: cover;
+
+    
+  }
+
+
+
+  .detailButtons{
+    text-align: center; 
+    margin: 10px;
+  }

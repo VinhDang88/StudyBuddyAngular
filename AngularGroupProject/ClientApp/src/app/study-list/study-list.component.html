@@ -1,4 +1,8 @@
-<h1>Pick a Category You'd Like to See Questions For:</h1>
-<div class="container" class="card" *ngFor="let s of study">
-  <a routerLink="/Study/{{ s.category }}">{{ s.category }}</a>
+<h1 class="TitleBack col-6 text-center offset-3 border rounded">
+  Pick a Category You'd Like to See Questions For:
+</h1>
+<div class="row">
+  <div class="col-4 card p-0 rounded border" *ngFor="let s of study">
+    <a routerLink="/Study/{{ s.category }}">{{ s.category }}</a>
+  </div>
 </div>

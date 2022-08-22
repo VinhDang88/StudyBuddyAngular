@@ -1,4 +1,40 @@
-<body>
+<!-- <img
+  src="https://wallpaperaccess.com/full/8090853.jpg"
+  style="
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    min-width: 50%;
+    min-height: 50%;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+  "
+/> -->
+
+<div class="bgImg"></div>
+<body style="background-color: transparent">
   <app-nav-menu></app-nav-menu>
   <router-outlet></router-outlet>
 </body>
+
+<style>
+  .bgImg {
+    background-image: url("https://wallpaperaccess.com/full/8090853.jpg");
+    background-repeat: repeat;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    min-width: 50%;
+    min-height: 50%;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+  }
+</style>

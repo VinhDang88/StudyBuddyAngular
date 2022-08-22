@@ -1,0 +1,12 @@
+/* .container2{
+    text-align: center;
+    display: block;
+    margin: auto;
+} */
+
+.container {
+    display: block;
+    text-align: center;
+    justify-content: center;
+    
+  }
