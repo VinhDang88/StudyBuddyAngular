@@ -49,9 +49,10 @@ export class FavoriteComponent implements OnInit {
   deleteFavorite(index:number):any{
 
     this.favoriteService.deleteFavorite(index).subscribe((response:Favorite) =>{
-      let i = this.favorites.findIndex(f => f.id == index)
-      this.favorites.splice(i,1)
-      // this.getFavorites();
+      this.favoriteService.getFavorite().subscribe((response:Favorite[]) =>{
+        this.favorites = response;
+      })
+      this.getFavoriteList();
     });
   }
 
