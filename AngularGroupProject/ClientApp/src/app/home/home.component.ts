@@ -13,6 +13,7 @@ newCategory:Study = {} as Study;
   study:Study = {} as Study;
   constructor(private studyService:StudyService){}
   toggleAdd:boolean = false;
+  id:number = 0;
 
   addQuestions(form:NgForm):void{
       let category:string = form.form.value.category;
@@ -32,6 +33,7 @@ newCategory:Study = {} as Study;
   LogIn(form:NgForm):void{
     let id = form.form.value.id
     UserService.userId = id;
+    this.id = id;
   }
 
   isLoggedIn():boolean{
