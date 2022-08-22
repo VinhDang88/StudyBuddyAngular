@@ -13,7 +13,12 @@ newCategory:Study = {} as Study;
   study:Study = {} as Study;
   constructor(private studyService:StudyService){}
   toggleAdd:boolean = false;
-  id:number = 0;
+  id:number | null = 0;
+
+  ngOnInit(){
+    this.id = UserService.userId;
+  }
+
 
   addQuestions(form:NgForm):void{
       let category:string = form.form.value.category;
