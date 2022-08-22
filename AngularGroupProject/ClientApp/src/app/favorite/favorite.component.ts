@@ -18,10 +18,14 @@ export class FavoriteComponent implements OnInit {
   study: Study[] = [];
   favoriteStudies: Study[] = [];
   favorite:Favorite = {} as Favorite;
+  toggleArr:boolean[] = [];
 
   ngOnInit(): void {
     this.studyService.getQuestions().subscribe((response: Study[]) => {
       this.study = response;
+      for(let i=0; i < this.study.length; i++){
+        this.toggleArr.push(false);
+      }
       this.getFavorites();
       console.log(this.study);
     });    
@@ -70,6 +74,10 @@ export class FavoriteComponent implements OnInit {
       // this.favorites = response;
       console.log(this.favorites);
     });
+  }
+
+  toggleAnswerArray(i:number):void{
+    this.toggleArr[i] = !this.toggleArr[i];
   }
   
 
